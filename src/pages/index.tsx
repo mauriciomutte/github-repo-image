@@ -1,9 +1,12 @@
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 
-import RepoCard from '../components/RepoCard/RepoCard'
+import RepoCard, { RepoCardProps } from '../components/RepoCard/RepoCard'
+import { languagePerCent } from '../helpers/languagePerCent'
+import { parseRepoFetch } from '../helpers/parseRepoFetch'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+function Home(props: RepoCardProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,18 +16,28 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <RepoCard
-          userName='mauriciomutte'
-          userImg='https://github.com/mauriciomutte.png'
-          name='mauriciomutte.com'
-          description={`💻 My personal blog, I write about technology and things I'm learning. Built in GatsbyJS`}
-          url=''
-          contributions={4}
-          usedBy={0}
-          stars={0}
-          forks={2}
-        />
+        <RepoCard {...props} />
       </main>
     </div>
   )
 }
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+  const repoData = await fetch(
+    `https://api.github.com/repos/${query.username}/${query.repo}`
+  )
+    .then(response => response.json())
+    .then(data => parseRepoFetch(data))
+
+  const languages = await fetch(repoData.languages_url)
+    .then(response => response.json())
+    .then(data => languagePerCent(data))
+
+  return {
+    props: {
+      ...repoData,
+      languages,
+    },
+  }
+}
+
+export default Home
