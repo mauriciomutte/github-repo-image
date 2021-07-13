@@ -42,10 +42,14 @@ const RepoCard = (props: RepoCardProps) => {
 
         <main>
           <div className={styles.stats}>
-            <RepoInfo name='contributors' title='Contributors' value={10} />
-            <RepoInfo name='usedby' title='Used by' value={28} />
-            <RepoInfo name='stars' title='Stars' value={169} />
-            <RepoInfo name='forks' title='Forks' value={19} />
+            <RepoInfo
+              name='contributors'
+              title='Contributors'
+              value={props.contributions}
+            />
+            <RepoInfo name='usedby' title='Used by' value={props.usedBy} />
+            <RepoInfo name='stars' title='Stars' value={props.stars} />
+            <RepoInfo name='forks' title='Forks' value={props.forks} />
           </div>
         </main>
       </div>
