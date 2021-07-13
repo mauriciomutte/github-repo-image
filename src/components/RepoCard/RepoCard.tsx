@@ -1,3 +1,5 @@
+import { languagePerCent } from '../../helpers/languagePerCent'
+import RepoFooter from '../RepoFooter/RepoFooter'
 import RepoInfo from '../RepoInfo/RepoInfo'
 
 import styles from './RepoCard.module.css'
@@ -12,6 +14,11 @@ type RepoCardProps = {
   usedBy: number
   stars: number
   forks: number
+}
+
+const mockLanguages = {
+  JavaScript: 30231,
+  Shell: 35,
 }
 
 const RepoCard = (props: RepoCardProps) => {
@@ -42,7 +49,7 @@ const RepoCard = (props: RepoCardProps) => {
           </div>
         </main>
       </div>
-      <footer className={styles.footer}></footer>
+      <RepoFooter languages={languagePerCent(mockLanguages)} />
     </section>
   )
 }
