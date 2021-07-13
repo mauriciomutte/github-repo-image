@@ -3,7 +3,7 @@ import React from 'react'
 import colorsJSON from './colors.json'
 import styles from './RepoFooter.module.css'
 
-type LanguagesData = {
+export type LanguagesData = {
   language: string
   percentage: number
 }
