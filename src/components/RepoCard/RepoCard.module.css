@@ -1,0 +1,49 @@
+.wrapper {
+  background-color: #fff;
+  width: 1000px;
+}
+
+.container {
+  padding: 3rem 5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .infos {
+  max-width: 600px;
+}
+
+.header .title {
+  color: #2f363d;
+  font-size: 56px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-break: auto;
+  margin: 0 0 2rem;
+}
+
+.header .title span {
+  display: block;
+  font-weight: bold;
+}
+
+.header .description {
+  color: #6f7680;
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.header .img {
+  height: 150px;
+  width: 150px;
+}
+
+main .stats {
+  display: flex;
+  gap: 50px;
+  margin-top: 5rem;
+}
