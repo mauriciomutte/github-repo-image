@@ -4,7 +4,7 @@ import RepoInfo from '../RepoInfo/RepoInfo'
 
 import styles from './RepoCard.module.css'
 
-type RepoCardProps = {
+export type RepoCardProps = {
   userName: string
   userImg: string
   name: string
