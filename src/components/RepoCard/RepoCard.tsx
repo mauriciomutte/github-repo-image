@@ -10,7 +10,7 @@ export type RepoCardProps = {
   description: string
   url: string
   contributions: number
-  usedBy: number
+  issues: number
   stars: number
   forks: number
   languages: LanguagesData[]
@@ -37,13 +37,13 @@ const RepoCard = (props: RepoCardProps) => {
 
         <main>
           <div className={styles.stats}>
+            <RepoInfo name='stars' title='Stars' value={props.stars} />
+            <RepoInfo name='issues' title='Issues' value={props.issues} />
             <RepoInfo
               name='contributors'
               title='Contributors'
               value={props.contributions}
             />
-            <RepoInfo name='usedby' title='Used by' value={props.usedBy} />
-            <RepoInfo name='stars' title='Stars' value={props.stars} />
             <RepoInfo name='forks' title='Forks' value={props.forks} />
           </div>
         </main>

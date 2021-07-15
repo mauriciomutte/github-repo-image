@@ -1,7 +1,7 @@
-import { ForkSvg, ContributorSvg, UsedBySvg, StarSvg } from './Icons'
+import { ForkSvg, ContributorSvg, IssuesSvg, StarSvg } from './Icons'
 import styles from './RepoInfo.module.css'
 
-type RepoInfoName = 'contributors' | 'forks' | 'usedby' | 'stars'
+type RepoInfoName = 'contributors' | 'forks' | 'issues' | 'stars'
 
 type RepoInfoProps = {
   name: RepoInfoName
@@ -13,7 +13,7 @@ const RepoInfo = ({ name, title, value }: RepoInfoProps) => {
   const icons = {
     contributors: ContributorSvg,
     forks: ForkSvg,
-    usedby: UsedBySvg,
+    issues: IssuesSvg,
     stars: StarSvg,
   }
 
