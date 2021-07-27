@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 
 import RepoCard, { RepoCardProps } from '../components/RepoCard/RepoCard'
@@ -22,13 +22,31 @@ function Home(props: RepoCardProps) {
   )
 }
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+  const { username, repo } = query
+
+  if (!username || !repo) {
+    return { notFound: true }
+  }
+
   const repoData = await fetch(
-    `https://api.github.com/repos/${query.username}/${query.repo}`
+    `https://api.github.com/repos/${username}/${repo}`
   )
-    .then(response => response.json())
+    .then(response => {
+      if (response.status !== 200) {
+        throw new Error(`Failed to fetch repo data: ${response.statusText}`)
+      }
+
+      return response.json()
+    })
     .then(data => parseRepoFetch(data))
 
-  const languages = await fetch(repoData.languages_url)
+  const languageUrl = repoData.languages_url
+
+  if (!languageUrl) {
+    return { notFound: true }
+  }
+
+  const languages = await fetch(languageUrl)
     .then(response => response.json())
     .then(data => languagePerCent(data))
 
