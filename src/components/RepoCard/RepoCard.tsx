@@ -1,7 +1,6 @@
-import RepoFooter, { LanguagesData } from '../RepoFooter/RepoFooter'
-import RepoInfo from '../RepoInfo/RepoInfo'
-
 import styles from './RepoCard.module.css'
+import RepoFooter, { LanguagesData } from './RepoFooter'
+import RepoInfo from './RepoInfo'
 
 export type RepoCardProps = {
   userName: string

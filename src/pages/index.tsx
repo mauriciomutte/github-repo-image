@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 
-import RepoCard, { RepoCardProps } from '../components/RepoCard/RepoCard'
+import RepoCard, { RepoCardProps } from '../components/RepoCard'
 import { languagePerCent } from '../helpers/languagePerCent'
 import { parseRepoFetch } from '../helpers/parseRepoFetch'
 import styles from '../styles/Home.module.css'
