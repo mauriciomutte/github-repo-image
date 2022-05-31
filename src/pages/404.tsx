@@ -6,36 +6,16 @@ import styles from '../styles/Home.module.css'
 export default function Custom404() {
   const router = useRouter()
 
-  const [username, setUsername] = useState('')
-  const [repo, setRepo] = useState('')
-
-  const onSubmit = (e: SyntheticEvent) => {
-    e.preventDefault()
-
+  const handleBackToHome = () => {
     router.push({
       pathname: '/',
-      query: { username, repo },
     })
   }
 
   return (
     <div className={styles.container}>
-      <h1>Repositório não encontrado</h1>
-
-      <form onSubmit={onSubmit}>
-        <input
-          type='text'
-          value={username}
-          onChange={({ target }) => setUsername(target.value)}
-        />
-        <span>/</span>
-        <input
-          type='text'
-          value={repo}
-          onChange={({ target }) => setRepo(target.value)}
-        />
-        <button type='submit'>Pesquisar</button>
-      </form>
+      <h1>This is not the web page you are looking for</h1>
+      <button onClick={handleBackToHome}>Back to home</button>
     </div>
   )
 }
