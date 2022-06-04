@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from 'next'
+import Link from 'next/link'
 
 function UserPage({ username, repos }: { username: string; repos: any }) {
   return (
@@ -7,7 +8,11 @@ function UserPage({ username, repos }: { username: string; repos: any }) {
       <ul>
         {repos?.map((repo: any) => (
           <li>
-            {repo.name} ({repo.stargazers_count})
+            <Link href={`${username}/${repo.name}`}>
+              <a>
+                {repo.name} ({repo.stargazers_count})
+              </a>
+            </Link>
           </li>
         ))}
       </ul>
