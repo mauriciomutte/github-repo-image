@@ -9,7 +9,7 @@ function Home() {
   const [searchValue, setSearchValue] = useState('')
 
   const handleSearchUser = () => {
-    push(`/user/${searchValue}`)
+    push(`/${searchValue}`)
   }
 
   return (
