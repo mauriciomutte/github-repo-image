@@ -17,3 +17,25 @@
   justify-content: center;
   align-items: center;
 }
+
+.inputWrapper {
+  display: flex;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.inputWrapper input {
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  outline: none;
+}
+
+.inputWrapper button {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 0 1rem;
+  font-size: 1em;
+}

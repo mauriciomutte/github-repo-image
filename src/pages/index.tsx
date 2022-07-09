@@ -22,11 +22,13 @@ function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Search Github username</h1>
-        <input
-          value={searchValue}
-          onChange={e => setSearchValue(e.target.value)}
-        />
-        <button onClick={handleSearchUser}>Search</button>
+        <div className={styles.inputWrapper}>
+          <input
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}
+          />
+          <button onClick={handleSearchUser}>Search</button>
+        </div>
       </main>
     </div>
   )
