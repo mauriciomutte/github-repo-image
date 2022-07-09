@@ -25,8 +25,6 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     `https://api.github.com/users/${query.username}/repos?type=owner&sort=updated&per_page=100`
   ).then(response => response.json())
 
-  console.log(repoData)
-
   return {
     props: {
       username: query.username,
