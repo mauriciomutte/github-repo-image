@@ -21,7 +21,7 @@ function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Search Github username</h1>
+        <h1 className={styles.title}>Search your Github user</h1>
         <div className={styles.inputWrapper}>
           <input
             value={searchValue}
