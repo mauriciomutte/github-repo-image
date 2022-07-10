@@ -1,9 +1,11 @@
 import { GetServerSidePropsContext } from 'next'
 import Link from 'next/link'
 
+import styles from '../../styles/User.module.css'
+
 function UserPage({ username, repos }: { username: string; repos: any }) {
   return (
-    <>
+    <div className={styles.container}>
       <h1>{username}</h1>
       <ul>
         {repos?.map((repo: any) => (
@@ -16,7 +18,7 @@ function UserPage({ username, repos }: { username: string; repos: any }) {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 
