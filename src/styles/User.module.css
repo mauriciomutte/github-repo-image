@@ -10,6 +10,6 @@
   gap: 0.5rem 4rem;
 }
 
-.container ul li:hover {
+.container ul li a:hover {
   text-decoration: underline;
 }
