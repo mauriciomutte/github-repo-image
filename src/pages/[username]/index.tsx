@@ -1,7 +1,9 @@
 import { GetServerSidePropsContext } from 'next'
 import Link from 'next/link'
-import { getUserRepos, UserRepoResponse } from '../../services/user'
+import { useRouter } from 'next/router'
 
+import { getUserRepos, UserRepoResponse } from '../../services/user'
+import Header from '../../components/Header/Header'
 import styles from '../../styles/User.module.css'
 
 type UserPageProps = {
@@ -10,21 +12,25 @@ type UserPageProps = {
 }
 
 function UserPage({ username, repos }: UserPageProps) {
+  const { push } = useRouter()
+
   return (
-    <div className={styles.container}>
-      <h1>{username}</h1>
-      <ul>
-        {repos?.map(repo => (
-          <li>
-            <Link href={`${username}/${repo.name}`}>
-              <a>
-                {repo.name} ({repo.stargazers_count})
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Header onBack={() => push('/')} title={username} />
+      <div className={styles.container}>
+        <ul>
+          {repos?.map(repo => (
+            <li>
+              <Link href={`${username}/${repo.name}`}>
+                <a>
+                  {repo.name} ({repo.stargazers_count})
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   )
 }
 
