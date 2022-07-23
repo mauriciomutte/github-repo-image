@@ -1,14 +1,20 @@
 import { GetServerSidePropsContext } from 'next'
 import Link from 'next/link'
+import { getUserRepos, UserRepoResponse } from '../../services/user'
 
 import styles from '../../styles/User.module.css'
 
-function UserPage({ username, repos }: { username: string; repos: any }) {
+type UserPageProps = {
+  username: string
+  repos: UserRepoResponse[]
+}
+
+function UserPage({ username, repos }: UserPageProps) {
   return (
     <div className={styles.container}>
       <h1>{username}</h1>
       <ul>
-        {repos?.map((repo: any) => (
+        {repos?.map(repo => (
           <li>
             <Link href={`${username}/${repo.name}`}>
               <a>
@@ -23,14 +29,12 @@ function UserPage({ username, repos }: { username: string; repos: any }) {
 }
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const repoData = await fetch(
-    `https://api.github.com/users/${query.username}/repos?type=owner&sort=updated&per_page=100`
-  ).then(response => response.json())
+  const repos = await getUserRepos(query.username as string)
 
   return {
     props: {
       username: query.username,
-      repos: repoData,
+      repos,
     },
   }
 }
