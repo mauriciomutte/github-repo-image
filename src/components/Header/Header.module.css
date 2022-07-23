@@ -1,0 +1,36 @@
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin: 16px auto;
+  max-width: 1024px;
+}
+
+.headerTitle {
+  margin: 0;
+}
+
+.backButton {
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: auto;
+  padding: 0;
+}
+
+.backButton img {
+  transition-duration: 0.2s;
+  transform: translateX(3px);
+}
+
+.backButton:hover img {
+  transform: translateX(1px);
+}
+
+.socialLink {
+  margin-left: auto;
+}
