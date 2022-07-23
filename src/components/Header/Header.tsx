@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import styles from './Header.module.css'
 
-const GITHUB_URL = 'hthttps://github.com/mauriciomutte/github-og-image'
+const GITHUB_URL = 'https://github.com/mauriciomutte/github-og-image'
 
 type HeaderProps = {
   title: string
@@ -20,7 +20,7 @@ const Header = ({ title, onBack }: HeaderProps) => (
       href={GITHUB_URL}
       className={styles.socialLink}
       target='_blank'
-      rel='noopener'
+      rel='noopener noreferer'
     >
       <Image src='/icons/github.svg' width={24} height={24} />
     </a>
