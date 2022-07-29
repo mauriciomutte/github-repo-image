@@ -47,7 +47,7 @@ const RepoCard = (props: RepoCardProps) => {
           </div>
         </main>
       </div>
-      <RepoFooter languages={props.languages} />
+      {props.languages && <RepoFooter languages={props.languages} />}
     </section>
   )
 }
