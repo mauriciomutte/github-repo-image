@@ -38,6 +38,7 @@
 }
 
 .header .img {
+  animation: zoom-in 1000ms;
   height: 150px;
   width: 150px;
 }
@@ -46,4 +47,13 @@ main .stats {
   display: flex;
   gap: 50px;
   margin-top: 5rem;
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0.75);
+  }
+  to {
+    transform: scale(1);
+  }
 }
