@@ -1,4 +1,14 @@
 .footer {
   display: flex;
+  animation: slide-up 1000ms;
   height: 20px;
+}
+
+@keyframes slide-up {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 20px;
+  }
 }
