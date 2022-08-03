@@ -1,11 +1,5 @@
-import { GetServerSidePropsContext } from 'next'
 import { useRouter } from 'next/router'
-import {
-  dehydrate,
-  QueryClient,
-  useQueries,
-  useQuery,
-} from '@tanstack/react-query'
+import { useQueries } from '@tanstack/react-query'
 
 import Header from '../../components/Header/Header'
 import RepoCard from '../../components/RepoCard'
@@ -23,11 +17,11 @@ function UserRepoPage() {
   const results = useQueries({
     queries: [
       {
-        queryKey: ['repoDetails'],
+        queryKey: ['repoDetails', { repo }],
         queryFn: () => getRepoDetails(username, repo),
       },
       {
-        queryKey: ['repoLanguages'],
+        queryKey: ['repoLanguages', { repo }],
         queryFn: () => getRepoLanguages(username, repo),
       },
     ],
@@ -51,25 +45,6 @@ function UserRepoPage() {
       </main>
     </>
   )
-}
-
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const queryClient = new QueryClient()
-
-  const { username, repo } = query as { username: string; repo: string }
-
-  await queryClient.prefetchQuery(['repoDetails'], () =>
-    getRepoDetails(username, repo)
-  )
-  await queryClient.prefetchQuery(['repoLanguages'], () =>
-    getRepoDetails(username, repo)
-  )
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
 }
 
 export default UserRepoPage
